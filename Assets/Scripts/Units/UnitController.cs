@@ -15,7 +15,7 @@ public class UnitController : MonoBehaviour
 
     private IEnumerator UnitProductionCoroutine()
     {
-        while (true) // TODO: check if game is over
+        while (!GameDataManager.Instance.isGameOver)
         {
             yield return new WaitForSeconds(this.Unit.ProductionRatePerSecond);
             this.Unit.Produce();
@@ -24,14 +24,24 @@ public class UnitController : MonoBehaviour
 
     private void InitializeUnit()
     {
-        // TODO: check if there is a file with this unit otherwise create a new one
-        this.Unit = new Unit
+        Unit unit = GameDataManager.Instance.GetUnit(this.name);
+
+        if (unit != null)
         {
-            Name = this.name,
-            Level = UnitLevel.Build(1),
-            ProductionRatePerSecond = 1.0f,
-            CurrentProduction = 0,
-            MaxProduction = 10
-        };
+            this.Unit = unit;
+        }
+        else
+        {
+            this.Unit = new Unit
+            {
+                Name = this.name,
+                Level = UnitLevel.Build(1),
+                ProductionRatePerSecond = 1.0f,
+                CurrentProduction = 0,
+                MaxProduction = 10
+            };
+
+            GameDataManager.Instance.AddUnit(this.Unit);
+        }
     }
 }

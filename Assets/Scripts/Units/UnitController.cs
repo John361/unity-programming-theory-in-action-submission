@@ -44,4 +44,13 @@ public class UnitController : MonoBehaviour
             GameDataManager.Instance.AddUnit(this.Unit);
         }
     }
+
+    // public methods
+    public void OnCollect()
+    {
+        float production = this.Unit.CurrentProduction;
+        GameDataManager.Instance.player.stars += production;
+
+        this.Unit.CurrentProduction = 0;
+    }
 }

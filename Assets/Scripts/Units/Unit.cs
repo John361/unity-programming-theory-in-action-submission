@@ -62,4 +62,14 @@ public class Unit
     {
         this.CurrentProduction += this.ProductionRatePerSecond * 1;
     }
+
+    public string ToStringProductionRate()
+    {
+        return this.ProductionRatePerSecond + "/s";
+    }
+
+    public string ToStringProduction()
+    {
+        return this.CurrentProduction + "/" + this.MaxProduction;
+    }
 }

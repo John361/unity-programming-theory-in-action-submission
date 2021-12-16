@@ -105,6 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6842496257636001674}
+  - component: {fileID: 4771355071985329561}
   m_Layer: 0
   m_Name: Candy
   m_TagString: Unit
@@ -127,3 +128,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4771355071985329561
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842496257635842986}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.016545294, y: 0.009315014, z: 0.006494244}
+  m_Center: {x: 0.00004908323, y: 0.003033328, z: -0.00012067884}

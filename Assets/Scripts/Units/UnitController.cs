@@ -13,6 +13,11 @@ public class UnitController : MonoBehaviour
         StartCoroutine(this.UnitProductionCoroutine());
     }
 
+    private void OnMouseUpAsButton()
+    {
+        Debug.Log("CLICKED");    
+    }
+
     private IEnumerator UnitProductionCoroutine()
     {
         while (!GameDataManager.Instance.isGameOver)

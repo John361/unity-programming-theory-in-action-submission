@@ -18,7 +18,7 @@ public class PlayerInfoUiController : MonoBehaviour
     {
         while (!GameDataManager.Instance.isGameOver)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             this.SetPlayerInfo();
         }
 

@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,10 +14,30 @@ public class UnitInfoUiController : MonoBehaviour
     private Button collectButton;
     private UnitController unitController;
 
+    private bool _isActivated;
+    private bool IsActivated
+    {
+        get { return this._isActivated; }
+        set
+        {
+            this._isActivated = value;
+            this.gameObject.SetActive(value);
+
+            if (this.IsActivated)
+            {
+                StartCoroutine(this.GetRealTimeUnitInfoCoroutine());
+            }
+            else
+            {
+                StopCoroutine(this.GetRealTimeUnitInfoCoroutine());
+            }
+        }
+    }
+
     // Private methods
     private void Start()
     {
-        this.gameObject.SetActive(false);
+        this.IsActivated = false;
     }
 
     private void Awake()
@@ -54,15 +75,24 @@ public class UnitInfoUiController : MonoBehaviour
         Unit unit = this.unitController.Unit;
 
         this.unitName.text = "Unit name: " + unit.Name;
-        this.unitLevel.text = "Unit level: " + unit.Level;
+        this.unitLevel.text = "Unit level: " + unit.Level.Level;
         this.unitProductionRate.text = "Production rate: " + unit.ToStringProductionRate();
         this.unitCurrentProduction.text = "Current production: " + unit.ToStringProduction();
+    }
+
+    private IEnumerator GetRealTimeUnitInfoCoroutine()
+    {
+        while (this.IsActivated)
+        {
+            yield return new WaitForSeconds(1);
+            this.SetInfo();
+        }
     }
 
     // Public methods
     public void Show(UnitController unitController)
     {
-        this.gameObject.SetActive(true);
+        this.IsActivated = true;
         this.unitController = unitController;
 
         this.SetInfo();
@@ -71,6 +101,6 @@ public class UnitInfoUiController : MonoBehaviour
     public void Hide()
     {
         this.unitController = null;
-        this.gameObject.SetActive(false);
+        this.IsActivated = false;
     }
 }

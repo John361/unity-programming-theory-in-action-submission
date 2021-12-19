@@ -5,17 +5,20 @@ public class UnitController : MonoBehaviour
 {
     // Private attributes
     public Unit Unit { get; private set; }
+    private UnitInfoUiController unitInfoUiController;
 
     // Private methods
     private void Start()
     {
         this.InitializeUnit();
+        this.unitInfoUiController = UnitInfoUiController.Instance;
+
         StartCoroutine(this.UnitProductionCoroutine());
     }
 
     private void OnMouseUpAsButton()
     {
-        Debug.Log("CLICKED");    
+        this.unitInfoUiController.Show(this);
     }
 
     private IEnumerator UnitProductionCoroutine()

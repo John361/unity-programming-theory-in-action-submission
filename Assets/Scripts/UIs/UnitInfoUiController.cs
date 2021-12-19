@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class UnitInfoUiController : MonoBehaviour
 {
     // Private attributes
+    public static UnitInfoUiController Instance { get; private set; }
     private TextMeshProUGUI unitName;
     private TextMeshProUGUI unitLevel;
     private TextMeshProUGUI unitProductionRate;
@@ -15,7 +16,20 @@ public class UnitInfoUiController : MonoBehaviour
     // Private methods
     private void Start()
     {
+        this.gameObject.SetActive(false);
+    }
+
+    private void Awake()
+    {
+        if (UnitInfoUiController.Instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
         this.InitializeComponents();
+        UnitInfoUiController.Instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void InitializeComponents()
@@ -48,10 +62,10 @@ public class UnitInfoUiController : MonoBehaviour
     // Public methods
     public void Show(UnitController unitController)
     {
-        this.unitController = unitController;
-        this.SetInfo();
-
         this.gameObject.SetActive(true);
+        this.unitController = unitController;
+
+        this.SetInfo();
     }
 
     public void Hide()

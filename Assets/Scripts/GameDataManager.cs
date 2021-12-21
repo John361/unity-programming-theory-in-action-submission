@@ -41,7 +41,7 @@ public class GameDataManager : MonoBehaviour
         return this.units.Find(u => u.Name == name);
     }
 
-    public void AddUnit(Unit unit)
+    public void AddUnit(Unit unit) // ENCAPSULE units list for kind of Set
     {
         if (this.GetUnit(unit.Name) == null)
         {

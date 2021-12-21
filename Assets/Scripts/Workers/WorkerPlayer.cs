@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class WorkerPlayer : Worker
+public class WorkerPlayer : Worker // INHERITANCE (CHILD)
 {
     // Private/Protected attributes
     private NavMeshAgent navMeshAgent;
@@ -35,7 +35,7 @@ public class WorkerPlayer : Worker
     }
 
     // Overrided methods
-    protected override IEnumerator Walk()
+    protected override IEnumerator Walk() // POLYMORPHISM (CHILD)
     {
         int index;
         Vector3 randomDecorationPosition;

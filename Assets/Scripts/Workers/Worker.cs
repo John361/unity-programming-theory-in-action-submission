@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Worker : MonoBehaviour
+public class Worker : MonoBehaviour // INHERITANCE (PARENT)
 {
     // Protected/Private attributes
     protected float walkDuration = 1.5f;
@@ -22,7 +22,7 @@ public class Worker : MonoBehaviour
         }
     }
 
-    protected virtual IEnumerator Walk()
+    protected virtual IEnumerator Walk() // POLYMORPHISM (PARENT)
     {
         float startRotation = this.transform.eulerAngles.y;
         float endRotation = startRotation + 360.0f;

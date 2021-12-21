@@ -16,9 +16,9 @@ public class UnitController : MonoBehaviour
         StartCoroutine(this.UnitProductionCoroutine());
     }
 
-    private void OnMouseUpAsButton()
+    private void OnMouseUpAsButton() 
     {
-        this.unitInfoUiController.Show(this);
+        this.unitInfoUiController.Show(this); // ABSTRACTION
     }
 
     private IEnumerator UnitProductionCoroutine()
@@ -26,7 +26,7 @@ public class UnitController : MonoBehaviour
         while (!GameDataManager.Instance.isGameOver)
         {
             yield return new WaitForSeconds(this.Unit.ProductionRatePerSecond);
-            this.Unit.Produce();
+            this.Unit.Produce(); // ABSTRACTION USAGE
         }
     }
 

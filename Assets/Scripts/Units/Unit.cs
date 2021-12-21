@@ -27,7 +27,7 @@ public class Unit
         set { this._productionRatePerSecond = value; }
     }
 
-    public float CurrentProduction
+    public float CurrentProduction // ABSTRACTION + ENCAPSULATION
     {
         get { return this._currentProduction; }
         set
@@ -43,7 +43,7 @@ public class Unit
         }
     }
 
-    public int MaxProduction
+    public int MaxProduction // ABSTRACTION + ENCAPSULATION
     {
         get { return this._maxProduction; }
         set
@@ -58,7 +58,7 @@ public class Unit
     }
 
     // Public methods
-    public void Produce()
+    public void Produce() // ABSTRACTION
     {
         this.CurrentProduction += this.ProductionRatePerSecond * 1;
     }

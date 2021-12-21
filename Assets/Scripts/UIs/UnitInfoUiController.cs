@@ -15,7 +15,7 @@ public class UnitInfoUiController : MonoBehaviour
     private UnitController unitController;
 
     private bool _isActivated;
-    private bool IsActivated
+    private bool IsActivated // ABSTRACTION
     {
         get { return this._isActivated; }
         set
@@ -90,7 +90,7 @@ public class UnitInfoUiController : MonoBehaviour
     }
 
     // Public methods
-    public void Show(UnitController unitController)
+    public void Show(UnitController unitController) // ABSTRACTION
     {
         this.IsActivated = true;
         this.unitController = unitController;
